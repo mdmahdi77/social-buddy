@@ -7,18 +7,18 @@ const PostDetail = () => {
     const [post, setPost] = useState({})
     const [comments, setComments] = useState([])
 
-    useEffect( () => {
+    useEffect( (id) => {
         const url = `https://jsonplaceholder.typicode.com/posts/${id}`
         fetch(url)
         .then(res => res.json())
         .then(data => setPost(data))
-    },[])
+    },[id])
 
-    useEffect(() => {
+    useEffect((id) => {
         fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
         .then(res => res.json())
         .then(data => setComments(data))
-    },[])
+    },[id])
     return (
         <div>
             <h1>This the post detail: {id}</h1>
